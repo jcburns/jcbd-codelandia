@@ -1,0 +1,1 @@
+var newRGBColor = new RGBColor();newRGBColor.red = 220;newRGBColor.green = 51;newRGBColor.blue = 0; newSwatch = app.activeDocument.swatches.add();newSwatch.name = "Bot Garden Floral-8";newSwatch.color = newRGBColor;
