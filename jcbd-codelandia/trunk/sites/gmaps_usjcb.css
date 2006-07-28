@@ -1,0 +1,64 @@
+	p{font-family: Georgia;}
+	.bubble {
+	font-size: 13px;
+	width: 210px;
+	}
+	H1, H2, H3, form {
+	font-family: Georgia;
+	color: #444;
+	}
+	#container {border: 3px #DDD; background: #C0C0C0;
+	float: left; width: 99%; min-width: 850px; max-width: 1250px;
+	position: relative;}
+	#map	
+	{
+		border: 1px solid black;
+		margin-right: 40px;
+		width: 750px;
+		height: 550px;
+		float: left;
+	}
+	
+	#sidebar {background: #DDD;
+	padding: 0 0 1.5em 750px;}
+	
+	#sidebar h3 {
+	margin: 1em 0 0.5em; 
+	padding: 0.25em; 
+	font-size: 1em;
+	background: #444; 
+	color: #DDD; 
+	position: relative;}
+	
+	#sidebar h3.first {margin-top: 0;}
+	
+	#waypoints, #message, .ll {
+	font-family: Verdana;
+	font-size: 10px;
+	line-height: 150%;
+	}
+	
+    v\:* {
+      behavior:url(#default#VML);
+    }
+	
+	A{
+	  color: #8B1E40;
+	  text-decoration: none;
+	}
+	A:link {
+	color: #294AC0;
+	text-decoration: none;
+	}
+	.foto {
+	background-color: #10181A;
+	padding: 2%;
+	margin: 10px;
+	border-color: #FFF;
+	border-width: 1px 1px 1px 1px;
+	border-style: solid;
+	}
+
+A:visited   { color: #2B6D8B;  }
+A:hover 	{ color: #294AC0; text-decoration: underline; }
+A:active	{ color: #294AC0;  }
