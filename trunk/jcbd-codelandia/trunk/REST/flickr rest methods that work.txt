@@ -1,0 +1,5 @@
+curl "http://www.flickr.com/services/rest/?api_key=7a29a98d8605775c4ae502251ecacda8&auth_token=&method=flickr.photos.search&tags='geotagged'&user_id=44124368320@N01"
+
+"http://www.flickr.com/services/rest/?api_key=7a29a98d8605775c4ae502251ecacda8&auth_token=&method=flickr.people.findByUsername&username=jcburns"
+
+http://www.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=7a29a98d8605775c4ae502251ecacda8&photo_id=55285804
