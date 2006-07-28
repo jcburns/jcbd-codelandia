@@ -1,0 +1,19 @@
+gmarkers[0].getPoint().distanceFrom(gmarkers[1].getPoint())
+
+(new GLatLng(33.77505,-84.36615)).distanceFrom(new GLatLng(33.77231,-84.36363))
+
+*3.2808399 meters to feet
+*0.000621371192  meters to miles
+
+3.2808399*(new GLatLng(33.77505,-84.36615)).distanceFrom(new GLatLng(33.77231,-84.36363))
+
+GLog.write('center is' + map.getCenter());
+
+wino = new GLatLng(33.77231,-84.36363)
+map.panTo(wino)
+
+map.openInfoWindowHtml(wino,('this spot is<br>'+(0.000621371192*wino.distanceFrom(gmarkers[0].getPoint())) + '<br>miles from here'))
+
+map.openInfoWindowHtml(wino,('that mixteca site is<br>'+(0.000621371192*wino.distanceFrom(gmarkers[3].getPoint())) + '<br>miles from here'))
+
+	
