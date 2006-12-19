@@ -1,19 +1,13 @@
 #summary A first hello.
 = Introduction =
 
-Add your content here.
-
 Hi, and welcome to what I gather is a wiki attached to the Google code account I set up. This is kind of interesting to 
 me, especially since I can start things here and then use traditional wiki editing software to add and manipulate pages.
 
 = Details =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+And now the details.
 
-
-
-
-
+= The unimportant stuff. =
+ 
+This would have to be the less important stuff, right? It's here at the bottom.
