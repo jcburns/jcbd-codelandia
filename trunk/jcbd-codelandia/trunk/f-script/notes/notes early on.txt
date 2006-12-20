@@ -1,0 +1,1044 @@
+
+keyWindow := NSApplication sharedApplication keyWindow.
+NSBezierPath setDefaultLineWidth:20.
+keyWindow contentView lockFocus.
+1 to:550 by:4 do:
+[:x|
+	path := NSBezierPath bezierPathWithOvalInRect:(x<>130 extent:200-(x/3)<>(x/2)).
+	(NSColor colorWithDeviceRed:x/570 green:0.1 blue:1-(x/570) alpha:1) set.
+	path stroke.
+	keyWindow flushWindow.
+	NSColor whiteColor set.
+	path setLineWidth:path lineWidth + 2.
+	path stroke.
+].
+keyWindow contentView unlockFocus.
+keyWindow display.
+
+
+form2 := NSForm alloc initWithFrame:(60<>300 extent:320<>185).
+"Put the form2 into the window"
+leWindow contentView addSubview:form2.
+form2 addEntry:'Name'.
+form2 addEntry:'Address'.
+form2 addEntry:'City'.
+form2 addEntry:'State'.
+form2 addEntry:'Zip'.
+form2 addEntry:'Phone'.
+form2 addEntry:'Email'.
+form2 setAutosizesCells:YES.
+
+leWindow := NSWindow alloc initWithContentRect:(100<>500 extent:450<>550)
+ styleMask:NSTitledWindowMask + NSClosableWindowMask + NSResizableWindowMask
+ backing:NSBackingStoreBuffered
+ defer:NO.
+ 
+leWindow orderFront:nil.
+
+ud := NSUserDefaults standardUserDefaults.
+
+form3 := NSForm alloc initWithFrame:(60<>300 extent:350<>210).
+leWindow contentView addSubview:form3.
+form3 addEntry:'Full name'.
+form3 addEntry:'Spouse'.
+form3 addEntry:'Song'.
+form3 addEntry:'Favorite root beer'.
+form3 addEntry:'Favorite color'.
+form3 addEntry:'Coffee'.
+form3 addEntry:'Group'.
+form3 addEntry:'Birth town'.
+form3 addEntry:'Likes eggnog?'.
+form3 setAutosizesCells:YES.
+
+0 to:8 do:
+[:x|
+(form3 cellAtIndex:x) setStringValue:(ud objectForKey:((form3 cellAtIndex:x) title)).
+].
+
+--heres the reverse--
+0 to:8 do: [:x|
+ud setObject:((form3 cellAtIndex:x) stringValue) forKey:((form3 cellAtIndex:x) title).]
+
+
+(form3 cellAtIndex:0) setStringValue:(ud objectForKey:((form3 cellAtIndex:0) title)).
+(form3 cellAtIndex:1) setStringValue:(ud objectForKey:((form3 cellAtIndex:1) title)).
+(form3 cellAtIndex:2) setStringValue:(ud objectForKey:((form3 cellAtIndex:2) title)).
+(form3 cellAtIndex:3) setStringValue:(ud objectForKey:((form3 cellAtIndex:3) title)).
+(form3 cellAtIndex:4) setStringValue:(ud objectForKey:((form3 cellAtIndex:4) title)).
+(form3 cellAtIndex:5) setStringValue:(ud objectForKey:((form3 cellAtIndex:5) title)).
+(form3 cellAtIndex:6) setStringValue:(ud objectForKey:((form3 cellAtIndex:6) title)).
+(form3 cellAtIndex:7) setStringValue:(ud objectForKey:((form3 cellAtIndex:7) title)).
+
+
+procinfo := NSProcessInfo processInfo
+
+(form cellAtIndex:3) setIntValue:(procinfo processIdentifier).
+(form cellAtIndex:2) setStringValue:(procDict objectForKey:'PATH').
+
+formaction := [lecombo addItemWithObjectValue:((form2 cellAtIndex:0) stringValue). lecombo2 addItemWithObjectValue:((form2 cellAtIndex:1) stringValue). lecombo3 addItemWithObjectValue:((form2 cellAtIndex:2) stringValue)]
+
+form2 setTarget:formaction; setAction:#value.
+
+[:lecolor|jcbdcolorlist colorWithKey:lecolor]
+
+-----
+
+fileDict := ((NSFileManager defaultManager) fileAttributesAtPath:thefile traverseLink:YES).
+
+-------
+
+thefile := NSOpenPanel openPanel setTreatsFilePackagesAsDirectories:true;runModal;filename.
+
+plisted := NSData dataWithContentsOfFile:thefile.
+
+based := (NSPropertyListSerialization propertyListFromData:plisted mutabilityOption:NSPropertyListMutableContainers format:nil errorDescription:nil).
+
+-------
+
+thefile := NSOpenPanel openPanel setTreatsFilePackagesAsDirectories:true;runModal;filename.
+((NSWorkspace sharedWorkspace) selectFile:thefile inFileViewerRootedAtPath:nil) 
+--------
+
+lecolors inspectIn:sys with:{#self, [:lecolor|jcbdcolorlist colorWithKey:lecolor]}
+
+defaultz := (NSUserDefaults standardUserDefaults) dictionaryRepresentation
+
+pantone_jcblist inspectIn:sys with:{#self, [:lecolor|PantoneList colorWithKey:lecolor]}
+
+therect := (NSBezierPath bezierPathWithRect:(50<>50 extent:200<>200))
+
+therect := (NSBezierPath bezierPathWithRect:(30<>100 extent:400<>400))
+
+NSColorPanel sharedColorPanel color set. therect fill.
+
+(NSImage alloc initWithContentsOfFile:'/Users/jcburns/Desktop/mt.pdf') inspect
+
+1 to:((resenelist _count)-1) do:
+[:x|
+	path := NSBezierPath bezierPathWithRect:(x<>200 extent:(x)<>(x)).
+	(resenelist _colorAtIndex:x) set.
+	path stroke
+	].
+	
+1 to:((PantoneList _count)-1) do:
+[:x|
+	path := NSBezierPath bezierPathWithRect:(x*25<>200 extent:(20)<>(20)).
+	(PantoneList _colorAtIndex:x) set.
+	path fill
+	].
+	
+
+leWindow2 := NSWindow alloc initWithContentRect:(100<>500 extent:450<>550)
+ styleMask:NSTitledWindowMask + NSClosableWindowMask + NSResizableWindowMask
+ backing:NSBackingStoreBuffered
+ defer:NO.
+ 
+leWindow2 orderFront:nil; setTitle:'A second place to place things.'. 
+
+thefile := '/Users/jcburns/Desktop/168SCampbellAve.gif'
+
+thefile2 := '/Users/jcburns/Desktop/merged-family.jpg'
+
+mergedFamily := (NSImage alloc initWithContentsOfFile:thefile2)
+
+theMap := (NSImage alloc initWithContentsOfFile:thefile)
+
+mergedFamily compositeToPoint:(0<>0) operation:NSCompositeCopy
+
+theMap compositeToPoint:(0<>300) operation:NSCompositeCopy
+	
+	
+NSBezierPath setDefaultLineWidth:4.
+leWindow contentView lockFocus.
+1 to:((jcbdcolorlist _count)-1) do:
+[:x|
+	path := NSBezierPath bezierPathWithRect:(x*25<>10 extent:(20)<>(20)).
+	(jcbdcolorlist _colorAtIndex:x) set.
+	path fill. (NSColor blackColor) set. path stroke.
+	].
+leWindow contentView unlockFocus.
+leWindow flushWindow.
+
+
+leWindow contentView lockFocus. 1 to:((jcbdcolorlist _count)-1) do: [:x|path:=NSBezierPath bezierPathWithRect:((x*30)<>(x*30) extent:90<>90). (jcbdcolorlist _colorAtIndex:x) set. path fill.]. leWindow contentView unlockFocus. leWindow flushWindow.
+
+form2 := NSForm alloc initWithFrame:(10<>300 extent:320<>150).
+leWindow contentView addSubview:form2.
+form2 addEntry:'Name'.
+form2 addEntry:'Address'.
+form2 addEntry:'City'.
+form2 addEntry:'State'.
+form2 addEntry:'Zip'.
+form2 addEntry:'Phone'.
+form2 addEntry:'Email'.
+form2 setAutosizesCells:YES.
+
+
+(form2 cellAtIndex:0) stringValue
+
+textfield := NSTextField alloc initWithFrame:(10<>200 extent:320<>60).leWindow contentView addSubview:textfield.
+
+form2 := NSForm alloc initWithFrame:(10<>300 extent:320<>150).
+"Put the form2 into the window"
+leWindow2 contentView addSubview:form2.
+form2 addEntry:'First'.
+form2 addEntry:'Secondarily'.
+form2 addEntry:'Concepts'.
+form2 addEntry:'Ideas'.
+form2 addEntry:'Email'.
+form2 addEntry:'Birthday'.
+form2 addEntry:'Comments'.
+form2 setAutosizesCells:YES.
+
+
+leAddress := ABAddressBook sharedAddressBook.
+leAddress me
+leAddress groups
+picOfMe := leAddress me imageData.
+picOfMe := (NSImage alloc initWithData:picOfMe).
+picOfMe compositeToPoint:(0<>300) operation:NSCompositeCopy
+leAddress searchIndexForRecordsMatching:'Burger'.
+
+(((ABAddressBook sharedAddressBook) me) valueForProperty:kABBirthdayProperty).
+
+serv := (NSNetService alloc) initWithDomain:'' type:'_ipp._tcp' name:'arrghPrinter' port:631
+
+NSMailDelivery deliverMessage:'if u cn rd ths msg u cn bcm a sec & gt a gd jb' subject:'Nothing much to mention' to:'jcburns@jcbd.com'
+
+newPerson := (ABPerson alloc) init
+newPerson setValue:'Kilgore' forProperty:kABFirstNameProperty
+newPerson setValue:'Trout' forProperty:kABLastNameProperty
+leAddress addRecord:newPerson
+
+
+(NSFileManager defaultManager) directoryContentsAtPath:'/Volumes'
+
+
+filez := NSFileManager defaultManager.
+lecombo := NSComboBox alloc initWithFrame:(20<>20 extent:300<>25).
+lecombo addItemWithObjectValue:'Hello'.
+lecombo addItemsWithObjectValues:(filez directoryContentsAtPath:'/Users/jcburns/').
+
+(leWindow contentView) addSubview:lecombo
+
+lecombo2 := NSComboBox alloc initWithFrame:(60<>200 extent:600<>25)
+
+lecombo3 := NSComboBox alloc initWithFrame:(60<>260 extent:600<>25).
+lecombo3 addItemsWithObjectValues:(12 iota).
+lecombo3 setNumberOfVisibleItems:14.
+
+lecombo3 addItemsWithObjectValues:(jcbdcolors allKeys)
+
+button := (NSButton alloc initWithFrame:(100<>20 extent:100<>50))
+button setBezelStyle:NSRoundedBezelStyle
+button2 := (NSButton alloc initWithFrame:(600<>20 extent:300<>50))
+button2 setBezelStyle:NSRoundedBezelStyle
+bl := [leWindow setTitle:(lecombo stringValue)]
+b2 := [leWindow setTitle:(lecombo2 stringValue)]
+
+button2 setTarget:b2. button2 setAction:#value:
+button setBezelStyle:NSRoundedBezelStyle
+
+lecombo addItemsWithObjectValues:(filez directoryContentsAtPath:'/Volumes')
+
+ud := NSUserDefaults standardUserDefaults
+lecombo addItemsWithObjectValues:(ud arrayForKey:'NSShortMonthNameArray')
+lecombo addItemsWithObjectValues:(ud arrayForKey:'NSHourNameDesignations')
+lecombo addItemsWithObjectValues:(ud arrayForKey:'NSNavRecentPlaces')
+lecombo2 addItemsWithObjectValues:(ud persistentDomainNames)
+lecombo3 addItemsWithObjectValues:(ud arrayForKey:'AppleLanguages')
+
+leWindow contentView _removeSubview:form2
+
+
+//this blows things up!
+[number := 0.
+[number <= (form3 numberOfRows)] whileTrue:
+[
+(form3 cellAtIndex:number) setStringValue:(ud objectForKey:((form3 cellAtIndex:number) title)).
+number := number +1.]
+]
+
+pantoneList := NSColorList colorListNamed:'Pantone solid coated'
+pantoneList setColor:(NSColor colorWithDeviceCyan: 1.0 magenta: 0.83 yellow: 0.76 black: 0 alpha:1.0) forKey:'Pantone 2000-63 C'
+
+LTList  := NSColorList colorListNamed:'London Transport'.
+LTList setColor:(NSColor colorWithCalibratedRed:(0/255) green:(45/255) blue:(115/255) alpha:1.0) forKey:'Piccadilly'.
+LTList setColor:(NSColor colorWithCalibratedRed:(223/255) green:(0/255) blue:(44/255) alpha:1.0) forKey:'Central'.
+LTList removeColorWithKey:'Unnamed1-1'.
+LTList writeToFile:'/Users/jcburns/Library/Colors/London Transport.clr'
+
+spel := NSSpellChecker sharedSpellChecker.
+spel countWordsInString:(F description) language:''
+
+leWell := NSColorWell alloc initWithFrame:(400<>400 extent:100<>100).
+leWindow contentView addSubview:leWell.
+
+leWell2 setColor:(jcbdcolorlist colorWithKey:(lecombo3 stringValue))
+leWell2 setColor:(leWell color)
+
+leWindow contentView lockFocus.
+1 to:((LTList _count)-1) do:
+[:x|
+	path := NSBezierPath bezierPathWithRect:(x*45<>100 extent:(40)<>(40)).
+	(LTList _colorAtIndex:x) set.
+	path fill. (NSColor blackColor) set. path stroke.
+	].
+leWindow contentView unlockFocus.
+leWindow flushWindow.
+
+leWindow contentView addSubview:lecombo3.
+
+filez := NSFileManager defaultManager
+lecombo3 addItemsWithObjectValues:(filez directoryContentsAtPath:'/Volumes').
+
+textfield := NSTextField alloc initWithFrame:(10<>10 extent:700<>200).leWindow contentView addSubview:textfield.
+
+hmImage := (NSImage alloc initWithContentsOfFile:'/Users/jcburns/Pictures/macpaint_tools.jpg')
+
+leWed := (NSImage alloc initWithContentsOfFile:'/Users/jcburns/Pictures/john and sam wedding.jpg').
+
+leWindow contentView lockFocus. leWed compositeToPoint:(110<>200) operation:NSCompositeCopy. leWindow contentView unlockFocus. leWindow flushWindow
+
+leWindow contentView lockFocus. hmImage compositeToPoint:(0<>10) operation:NSCompositeCopy. leWed compositeToPoint:(110<>200) operation:NSCompositeCopy.  leWindow contentView unlockFocus. leWindow flushWindow
+
+leWindow contentView lockFocus. 
+0 to:5 do:
+[:x|
+leWed compositeToPoint:(x*(leWed size) width<>5) operation:NSCompositeCopy.
+leWed compositeToPoint:(x*(leWed size) width<>(1*(leWed size) height)) operation:NSCompositeCopy.
+leWed compositeToPoint:(x*(leWed size) width<>(2*(leWed size) height)) operation:NSCompositeCopy.
+leWed compositeToPoint:(x*(leWed size) width<>(3*(leWed size) height)) operation:NSCompositeCopy.
+leWed compositeToPoint:(x*(leWed size) width<>(4*(leWed size) height)) operation:NSCompositeCopy.
+leWed compositeToPoint:(x*(leWed size) width<>(5*(leWed size) height)) operation:NSCompositeCopy.
+].
+leWindow contentView unlockFocus. leWindow flushWindow
+
+
+theApps := (NSWorkspace sharedWorkspace) launchedApplications.
+
+theApps @ objectForKey:'NSApplicationName'
+
+enum := theApps objectEnumerator.
+
+((NSWorkspace sharedWorkspace) launchedApplications) @ objectForKey:'NSApplicationName'
+
+leCombo3 addItemsWithObjectValues:(((NSWorkspace sharedWorkspace) launchedApplications) @ objectForKey:'NSApplicationName')
+
+leCombo3 addItemsWithObjectValues:(((NSWorkspace sharedWorkspace) launchedApplications) @ objectForKey:'NSApplicationBundleIdentifier')
+
+theApp := NSApplication sharedApplication.
+theApp mainMenu
+theApp keyWindow
+theApp speakString:(theApp self description)
+
+thesize := NSValue sizeWithWidth:320 height:22.
+
+segControl2 := NSSegmentedControl alloc initWithFrame:thesize.
+
+segControl2 setSegmentCount:4.
+segControl2 setLabel:'Import' forSegment:0.
+segControl2 setLabel:'Aggrandize' forSegment:1.
+segControl2 setLabel:'Hurtle' forSegment:2.
+segControl2 setLabel:'Obfuscate' forSegment:3.
+(leWindow contentView) addSubview:segControl2
+
+(op printOperationWithView:(leWindow2 contentView)) runOperation
+
+leWindow setAlphaValue:0.4.
+leWindow setHasShadow:0.
+leWindow setLevel:NSScreenSaverWindowLevel
+
+leWindow setAlphaValue:1.
+leWindow setHasShadow:1.
+leWindow setLevel:NSNormalWindowLevel
+
+leWindow center
+
+--------
+
+leWindow := NSWindow alloc initWithContentRect:(100<>500 extent:750<>550)
+ styleMask:NSTitledWindowMask + NSClosableWindowMask + NSResizableWindowMask
+ backing:NSBackingStoreBuffered
+ defer:NO.
+ 
+leWindow orderFront:nil.
+leWindow setTitle:'Colors and defaults'.
+
+ud := NSUserDefaults standardUserDefaults.
+
+form3 := NSForm alloc initWithFrame:(60<>300 extent:350<>210).
+leWindow contentView addSubview:form3.
+form3 addEntry:@{'Full name','Spouse','Song','Favorite root beer','Favorite color','Coffee','Group','Birth town','Likes eggnog?'}.
+form3 setAutosizesCells:YES.
+
+0 to:8 do:
+[:x|
+(form3 cellAtIndex:x) setStringValue:(ud objectForKey:((form3 cellAtIndex:x) title)).
+].
+
+jcbdcolorlist := NSColorList colorListNamed:'jcbD clients'.
+lecombo3 := NSComboBox alloc initWithFrame:(60<>260 extent:600<>25).
+lecombo3 setNumberOfVisibleItems:24.
+lecombo3 addItemsWithObjectValues:(jcbdcolorlist allKeys).
+leWell := NSColorWell alloc initWithFrame:(450<>400 extent:100<>100).
+leWindow contentView addSubview:leWell.
+(leWindow contentView) addSubview:lecombo3.
+color_it := [leWell setColor:(jcbdcolorlist colorWithKey:(lecombo3 stringValue))].
+lecombo3 setTarget:color_it.
+lecombo3 setAction:#value
+
+--------
+color_it := [leWell setColor:(jcbdcolorlist colorWithKey:(lecombo3 stringValue)); sendAction:#value to:color2form].
+leWell setTarget:color2form; setAction:#value.
+(NSColorPanel sharedColorPanel) setShowsAlpha:1.
+--------
+
+misccolors := NSColorList colorListNamed:'jcb miscellaneous'.
+lecombo3 addItemsWithObjectValues:(misccolors allKeys).
+legos := NSColorList colorListNamed:'Lego bricks'.
+lecombo3 addItemsWithObjectValues:(legos allKeys).
+
+AB := ABAddressBook sharedAddressBook.
+ABpeople := AB people.
+ABenum := ABpeople objectEnumerator.
+
+(NSFileManager defaultManager) createFileAtPath:'/yes4.vcf' contents: ((ABenum nextObject) vCardRepresentation) attributes: nil
+------
+[eh setColor:(jcbdcolorlist _colorAtIndex:(ee intValue)).um selectItemAtIndex:(ee intValue).textfield setStringValue: (eh color) description]
+color3 := [well1 setColor:(jcbdcolorlist colorWithKey:(segControl2 labelForSegment:segControl2 selectedSegment)).cta value].
+segControl2 setTarget:color3; setAction:#value.
+----
+
+textfield := NSTextField alloc initWithFrame:(10<>10 extent:600<>160).leWindow contentView addSubview:textfield.
+leURL3 := (NSURL alloc) initWithString:'http://jcburns:xxxxxx@del.icio.us/api/posts/recent?count=10000'.
+textfield setStringValue:(NSString stringWithContentsOfURL:leURL3)
+
+(form3 cellAtIndex:4) setTitle:'Red'.
+(form3 cellAtIndex:5) setTitle:'Green'.
+(form3 cellAtIndex:6) setTitle:'Blue'.
+(form3 cellAtIndex:7) setTitle:'Alpha'.
+(form3 cellAtIndex:8) setTitle:'Brightness'.
+
+color2Form:= [(form3 cellAtIndex:4) setFloatValue:(leWell color) redComponent. (form3 cellAtIndex:5) setFloatValue:(leWell color) greenComponent. (form3 cellAtIndex:6) setFloatValue:(leWell color) blueComponent. (form3 cellAtIndex:7) setFloatValue:(leWell color) alphaComponent. (form3 cellAtIndex:8) setFloatValue:(leWell color) brightnessComponent.]
+
+color2form := [(form3 cellAtIndex:4) setFloatValue:(leWell color) redComponent.
+(form3 cellAtIndex:5) setFloatValue:(leWell color) greenComponent.
+(form3 cellAtIndex:6) setFloatValue:(leWell color) blueComponent.
+(form3 cellAtIndex:7) setFloatValue:(leWell color) alphaComponent.
+(form3 cellAtIndex:8) setFloatValue:(leWell color) brightnessComponent.
+(form4 cellAtIndex:0) setFloatValue:((leWell color) redComponent)*255.0.
+(form4 cellAtIndex:1) setFloatValue:((leWell color) greenComponent)*255.0.
+(form4 cellAtIndex:2) setFloatValue:((leWell color) blueComponent)*255.0.
+(form4 cellAtIndex:3) setFloatValue:((leWell color) alphaComponent)*255.0.
+(form4 cellAtIndex:4) setFloatValue:((leWell color) hueComponent)*360.0.
+(form4 cellAtIndex:5) setFloatValue:((leWell color) saturationComponent)*100.0.
+(form4 cellAtIndex:6) setFloatValue:((leWell color) brightnessComponent)*100.0.
+]
+
+
+form4 := NSForm alloc initWithFrame:(560<>300 extent:350<>210).
+leWindow contentView addSubview:form4.
+form4 addEntry:@{'Full name','Spouse','Song','Favorite root beer','Favorite color','Coffee','Group','Birth town','Likes eggnog?'}.
+form4 setAutosizesCells:YES.
+
+(form4 cellAtIndex:0) setTitle:'Red'.
+(form4 cellAtIndex:1) setTitle:'Green'.
+(form4 cellAtIndex:2) setTitle:'Blue'.
+(form4 cellAtIndex:3) setTitle:'Alpha'.
+(form4 cellAtIndex:4) setTitle:'Hue'.
+(form4 cellAtIndex:5) setTitle:'Saturation'.
+(form4 cellAtIndex:6) setTitle:'Brightness'.
+
+
+(((NSScreen screens) at:0) deviceDescription) objectForKey:'NSDeviceResolution'.
+((NSScreen screens) at:0) deviceDescription.
+------
+xm := NSDictionary dictionaryWithContentsOfFile:'Users/jcburns/Desktop/clutter/Art Directors Toolkit.app/Contents/Resources/PANTONE� solid coated.plist'.
+colorinfo := xm objectForKey:'Color Info'.
+colornames := xm objectForKey:'Color Names'.
+pan := NSColorList colorListNamed:'Pantone solid coated'.
+nxt := colornames objectEnumerator.
+
+[[(ag := nxt nextObject)=nil] whileFalse:[  
+ug := colorinfo objectForKey:ag. 
+zzt:=(NSColor colorWithCalibratedRed:((ug objectForKey:'Red')/255.0) green:((ug objectForKey:'Green')/255.0) blue:((ug objectForKey:'Blue')/255.0) alpha:1.0). 
+pan setColor:zzt forKey:ag]]
+
+--------
+
+leWindow := NSWindow alloc initWithContentRect:(100<>500 extent:750<>550)
+ styleMask:NSTitledWindowMask + NSClosableWindowMask
+ backing:NSBackingStoreBuffered
+ defer:NO.
+theTextView := (NSTextView alloc) initWithFrame:((leWindow contentView) frame).
+leWindow setContentView:theTextView.
+leWindow makeFirstResponder:theTextView.
+leWindow makeKeyAndOrderFront:nil
+-------
+
+(leWindow dataWithPDFInsideRect:((leWindow contentView) bounds)) writeToFile:'/data.pdf' atomically:YES
+
+(NSTimer scheduledTimerWithTimeInterval:1.0 target:clok selector:#value userInfo:nil repeats:1)
+
+lucida90 := NSFont systemFontOfSize:90.0
+
+clok := [textfield setStringValue:((NSCalendarDate calendarDate) descriptionWithCalendarFormat:'%H:%M:%S')]
+clok := [textfield setStringValue:((NSCalendarDate calendarDate) descriptionWithCalendarFormat:'%1I:%M:%S'); setTextColor:(leWell color)]
+
+------
+leWindow := NSWindow alloc initWithContentRect:(100<>500 extent:750<>550)
+ styleMask:NSTitledWindowMask + NSClosableWindowMask
+ backing:NSBackingStoreBuffered
+ defer:NO.
+theTextView := (NSTextView alloc) initWithFrame:((leWindow contentView) frame).
+leWindow setContentView:theTextView.
+leWindow makeFirstResponder:theTextView.
+leWindow makeKeyAndOrderFront:nil.
+leWin2 := NSWindow alloc initWithContentRect:(5<>5 extent:450<>250)
+ styleMask:NSTitledWindowMask + NSClosableWindowMask + NSResizableWindowMask
+ backing:NSBackingStoreBuffered
+ defer:NO.
+form3 := NSForm alloc initWithFrame:(10<>10 extent:400<>240).
+leWin2 contentView addSubview:form3.
+form3 addEntry:@{'Font','Text color','Background color','Text','Selected range','Selected text'}.
+form3 setAutosizesCells:YES.
+leWin2 makeKeyAndOrderFront:nil.
+update:= [(form3 cellAtIndex:0) setStringValue:((theTextView font)description).
+(form3 cellAtIndex:1) setStringValue:((theTextView textColor)description).
+(form3 cellAtIndex:2) setStringValue:((theTextView backgroundColor)description).
+(form3 cellAtIndex:3) setStringValue:(theTextView string).
+(form3 cellAtIndex:4) setStringValue:((theTextView selectedRange)printString).
+(form3 cellAtIndex:5) setStringValue:((theTextView accessibilitySelectedText)).
+leWindow setTitle:(theTextView string)].
+leWin2 setTitle:'Statsamundo'.
+agh := (NSTimer scheduledTimerWithTimeInterval:1.0 target:update selector:#value userInfo:nil repeats:1).
+
+textfield removeFromSuperview
+--------
+theTextView tightenKerning:20.
+--------
+
+AB := ABAddressBook sharedAddressBook.
+ABpeople := AB people.
+ABenum := ABpeople objectEnumerator.
+theTextView setString:((ABenum nextObject)stringForIndexing).
+--------
+
+(theTextView typingAttributes)objectForKey:'NSKern'
+
+---------
+theTextView setTextColor:((NSColorList colorListNamed:'jcbD clients') colorWithKey:'WOUB 003')
+
+clients := (NSColorList colorListNamed:'jcbD clients') allKeys
+
+nxt := clients objectEnumerator
+gak := (nxt nextObject). theTextView setString:gak. theTextView setTextColor:((NSColorList colorListNamed:'jcbD clients') colorWithKey:(gak)).
+
+---------
+list:= 'Crayons'.clients := (NSColorList colorListNamed:list) allKeys. nxt:= clients objectEnumerator
+gak := (nxt nextObject). theTextView setString:gak. theTextView setTextColor:((NSColorList colorListNamed:list) colorWithKey:(gak)).update value
+
+--------
+contentz := (NSString alloc) initWithContentsOfFile:'/Users/jcburns/Documents/Rolodesk titanium'.
+/Volumes/LeVieuxDVD 005/StorageSet 008/Giga1/oldRolodesk
+cardz := contentz componentsSeparatedByString:'^'.
+cardz2 := NSMutableArray arrayWithContentsOfFile:('~/Library/Preferences/cardz.plist' stringByExpandingTildeInPath).
+--------
+cardzTrimmed := cardz @ trimWhiteSpace
+cardzTrimmed writeToFile:'/Users/jcburns/Library/Preferences/cardz_older.plist' atomically:YES.
+
+
+
+(NSImage alloc initWithContentsOfFile:(NSOpenPanel openPanel setTreatsFilePackagesAsDirectories:true;runModal;filename)) inspect
+
+-------
+datesString := (NSPasteboard generalPasteboard) stringForType:'NSStringPboardType'.
+dateStrings := datesString componentsSeparatedByString:'\r'.
+dates := NSDate dateWithNaturalLanguageString:@dateStrings.
+dateStringsOut := dates descriptionWithCalendarFormat:'%a %b %e %Y %I:%M:%S %p'.
+datesStringOut := dateStringsOut componentsJoinedByString:'\r'.
+(NSPasteboard generalPasteboard) declareTypes:{'NSStringPboardType'} owner:nil.
+(NSPasteboard generalPasteboard) setString:datesStringOut forType:'NSStringPboardType'.
+
+---------
+((NSDate dateWithNaturalLanguageString:@(((NSPasteboard generalPasteboard) stringForType:'NSStringPboardType') componentsSeparatedByString:'\r')) descriptionWithCalendarFormat:'%a %b %e %Y %I:%M:%S %p') componentsJoinedByString:'\r'
+
+
+aPopup := (NSPopUpButton alloc).
+
+(aPopup cell) setControlSize:NSMiniControlSize.
+aPopup setBordered:NO.
+(aPopup cell) setBezelStyle:NSShadowlessSquareBezelStyle.
+(aPopup cell) setArrowPosition:NSPopUpArrowAtBottom.
+aPopup addItemWithTitle:'An item'
+aPopup addItemWithTitle:'A second item'.
+aPopup sizeToFit.
+
+(leWindow contentView) addSubview:aPopup
+
+--------
+
+(NSBundle bundleWithPath:'/Users/jcburns/Documents/jcb development/cocoa/jcbTestmenuFramework/build/jcbTestmenuFramework.framework') load
+leMenu := (NSUnarchiver unarchiveObjectWithFile:'Users/jcburns/Desktop/menu.items')
+leMenu addObject:(FoodItem new).
+(leMenu objectAtIndex:3) setName:'Tacos al pastor';setPrice:4.95
+
+NSArchiver archiveRootObject:leMenu toFile:'/newmenu.items'
+--------
+(NSBundle bundleWithPath:'/System/Library/Frameworks/Message.framework') load.
+NSMailDelivery deliverMessage:'if u cn rd ths msg u cn bcm a sec & gt a gd jb' subject:'Nothing much to mention' to:'jcburns@yahoo.com'
+--------
+
+leWindow := NSWindow alloc initWithContentRect:(100<>500 extent:750<>850) styleMask:NSTitledWindowMask + NSClosableWindowMask + NSResizableWindowMask backing:NSBackingStoreBuffered defer:NO.
+leWindow makeKeyAndOrderFront:nil.
+theWebView := (WebView alloc) initWithFrame:((leWindow contentView) frame).
+leWindow setContentView:theWebView.
+myHistory := ((WebHistory) alloc)init.
+WebHistory setOptionalSharedHistory:myHistory.
+
+(theWebView mainFrame) loadRequest:(NSURLRequest requestWithURL:(NSURL URLWithString:'http://www.google.com'))
+
+(theWebView mainFrame) loadHTMLString:(NSString stringWithContentsOfFile:'/Users/jcburns/Sites/atl_wxmaps.html') baseURL:nil
+
+leWindow setTitle:(theWebView mainFrameURL)
+leWindow setTitle:(theWebView mainFrameTitle)
+
+myHistory := ((WebHistory) alloc)init.
+WebHistory setOptionalSharedHistory:myHistory.
+
+myArray:= myHistory orderedItemsLastVisitedOnDay:(NSCalendarDate now)
+
+(theWebView backForwardList) itemAtIndex:-3
+
+--------
+(theWebView windowScriptObject)
+
+--------
+leWindowPDF := NSWindow alloc initWithContentRect:(100<>500 extent:750<>850) styleMask:NSTitledWindowMask + NSClosableWindowMask + NSResizableWindowMask backing:NSBackingStoreBuffered defer:NO.
+leWindowPDF makeKeyAndOrderFront:nil.
+thePDFview := (PDFView alloc)  initWithFrame:((leWindowPDF contentView) frame).
+leWindowPDF setContentView:thePDFview.
+thePDF := (PDFDocument alloc) initWithURL: (NSURL fileURLWithPath:'/Users/jcburns/Desktop/Borders 25% Off Coupon.pdf').
+thePDFview setDocument:thePDF.
+thePDFview zoomIn:1.
+thePDFview _setActualSize:1
+
+((thePDFview document) findString:'Cuba' withOptions:0) count.
+
+pdf2 := (PDFDocument alloc) initWithURL: (NSURL fileURLWithPath:(NSOpenPanel openPanel setTreatsFilePackagesAsDirectories:false;runModal;filename)).
+
+leQTwindow := NSWindow alloc initWithContentRect:(100<>500 extent:800<>600) styleMask:NSTitledWindowMask + NSClosableWindowMask + NSResizableWindowMask backing:NSBackingStoreBuffered defer:NO.
+leQTwindow makeKeyAndOrderFront:nil.
+theQTview := (QTMovieView alloc)  initWithFrame:((leQTwindow contentView) frame).
+leQTwindow setContentView:theQTview.
+theMovie := QTMovie movieWithFile: (NSOpenPanel openPanel setTreatsFilePackagesAsDirectories:false;runModal;filename).
+theQTview setMovie:theMovie.
+((theMovie tracks) at:0) trackAttributes
+theMovie3 attributeForKey:'QTMovieNaturalSizeAttribute'.
+themovie tracks.
+video := (themovie tracks)objectAtIndex:0.
+video setHighQualityVideo:1.
+
+
+((theQTview subviews) objectAtIndex:0) bounds.
+theQTview setPreservesAspectRatio:1.
+theQTview setFillColor:(NSColor colorWithCalibratedWhite:0.3 alpha:1.0).
+theMovie2 setVolume:0.2.
+
+(theQTview window) setFrame:(0<>0 corner:(((theQTview movie) attributeForKey:'QTMovieNaturalSizeAttribute')width)<>((((theQTview movie) attributeForKey:'QTMovieNaturalSizeAttribute')height)+(theQTview controllerBarHeight))) display:YES
+(theQTview window) setFrame:(0<>0 corner:(0.9*((theQTview movie) attributeForKey:'QTMovieNaturalSizeAttribute')width)<>((((theQTview movie) attributeForKey:'QTMovieNaturalSizeAttribute')height)+(theQTview controllerBarHeight))) display:YES
+(last one does DV aspect)
+----
+
+leScript := (NSAppleScript alloc) initWithSource:'tell application "Microsoft Excel" \n Value of Selection \n end tell'.
+leScript2 := (NSAppleScript alloc) initWithSource:'tell application "Microsoft Excel"
+	set one_to_two to {0, 0, 0, 0, 0, 0}
+	set theoffset to 109
+	set item 1 of one_to_two to Value of Row (theoffset) of Selection
+	set item 2 of one_to_two to Value of Row (theoffset + 6) of Selection
+	set item 3 of one_to_two to Value of Row (theoffset + 7) of Selection
+	set item 4 of one_to_two to Value of Row 177 of Selection
+	set item 5 of one_to_two to Value of Row (theoffset + 8) of Selection
+	set item 6 of one_to_two to Value of Row (theoffset + 9) of Selection
+	
+	set tiny to {0, 0, 0, 0, 0, 0}
+	set theoffset to 59
+	set item 1 of tiny to Value of Row (theoffset) of Selection
+	set item 2 of tiny to Value of Row (theoffset + 6) of Selection
+	set item 3 of tiny to Value of Row (theoffset + 7) of Selection
+	set item 4 of tiny to Value of Row 178 of Selection
+	set item 5 of tiny to Value of Row (theoffset + 8) of Selection
+	set item 6 of tiny to Value of Row (theoffset + 9) of Selection
+	
+	set small to {0, 0, 0, 0, 0, 0}
+	set theoffset to 72
+	set item 1 of small to Value of Row (theoffset) of Selection
+	set item 2 of small to Value of Row (theoffset + 6) of Selection
+	set item 3 of small to Value of Row (theoffset + 7) of Selection
+	set item 4 of small to Value of Row 179 of Selection
+	set item 5 of small to Value of Row (theoffset + 8) of Selection
+	set item 6 of small to Value of Row (theoffset + 9) of Selection
+	
+	set medium to {0, 0, 0, 0, 0, 0}
+	set theoffset to 128
+	set item 1 of medium to Value of Row (theoffset) of Selection
+	set item 2 of medium to Value of Row (theoffset + 6) of Selection
+	set item 3 of medium to Value of Row (theoffset + 7) of Selection
+	set item 4 of medium to Value of Row 180 of Selection
+	set item 5 of medium to Value of Row (theoffset + 8) of Selection
+	set item 6 of medium to Value of Row (theoffset + 9) of Selection
+	
+	set large to {0, 0, 0, 0, 0, 0}
+	set theoffset to 85
+	set item 1 of large to Value of Row (theoffset) of Selection
+	set item 2 of large to Value of Row (theoffset + 6) of Selection
+	set item 3 of large to Value of Row (theoffset + 7) of Selection
+	set item 4 of large to Value of Row 181 of Selection
+	set item 5 of large to Value of Row (theoffset + 8) of Selection
+	set item 6 of large to Value of Row (theoffset + 9) of Selection
+	
+	set urbanized to {0, 0, 0, 0, 0, 0}
+	set theoffset to 45
+	set item 1 of urbanized to Value of Row (theoffset) of Selection
+	set item 2 of urbanized to Value of Row (theoffset + 6) of Selection
+	set item 3 of urbanized to Value of Row (theoffset + 7) of Selection
+	set item 4 of urbanized to Value of Row 182 of Selection
+	set item 5 of urbanized to Value of Row (theoffset + 8) of Selection
+	set item 6 of urbanized to Value of Row (theoffset + 9) of Selection
+	
+	set mound to {0, 0, 0, 0, 0, 0}
+	set theoffset to 26
+	set item 1 of mound to Value of Row (theoffset) of Selection
+	set theoffset to 149
+	set item 2 of mound to Value of Row (theoffset + 6) of Selection
+	set item 3 of mound to Value of Row (theoffset + 7) of Selection
+	set item 4 of mound to Value of Row 183 of Selection
+	set item 5 of mound to Value of Row (theoffset + 8) of Selection
+	set item 6 of mound to Value of Row (theoffset + 9) of Selection
+	
+	return {(Value of Row 1 of Selection)} & {(Name of Worksheet of Selection)} & {one_to_two} & {tiny} & {small} & {medium} & {large} & {urbanized} & {mound}
+end tell
+'
+
+
+error := Pointer alloc.
+
+gab := (leScript executeAndReturnError:nil).
+
+(gab descriptorAtIndex:@((gab numberOfItems)iota)+1) stringValue
+
+okay := (NSAEDescriptorTranslator sharedAEDescriptorTranslator) objectByTranslatingDescriptor:gab5 toType:nil inSuite:nil
+okay2 := (NSAEDescriptorTranslator sharedAEDescriptorTranslator) objectByTranslatingDescriptor:gab4 toType:nil inSuite:nil
+
+(okay2 objectAtIndex:0).
+
+----
+
+leScript := (NSAppleScript alloc) initWithSource:'tell application "Terminal" \n activate \n end tell'.
+error := Pointer alloc.
+leScript executeAndReturnError:error
+
+leScript := (NSAppleScript alloc)initWithSource:'tell app "Finder" \n activate \n display dialog "You have exhausted the world supply of sea cow information." \n end tell'
+
+leScript3 := (NSAppleScript alloc)initWithSource:'tell app "Finder" \n get the name of every item in the desktop \n end tell'.
+
+gab := (leScript3 executeAndReturnError:nil).
+
+(gab descriptorAtIndex:1) stringValue
+
+(gab descriptorAtIndex:@((gab numberOfItems)iota)) stringValue
+
+desktop := (gab descriptorAtIndex:@(((gab numberOfItems)+1)iota)) stringValue. desktop removeObjectAtIndex:0
+
+licon := (NSWorkspace sharedWorkspace) iconForFile:(NSOpenPanel openPanel setTreatsFilePackagesAsDirectories:false;runModal;filename). licon setSize:(NSValue sizeWithWidth:128 height:128);inspect
+
+------
+task := (NSTask alloc) init. task setLaunchPath:'/bin/ls'. arguments := {'-a', '-l', '-h', nil}.  task setArguments: arguments. pipe := NSPipe new. task setStandardOutput:pipe. file := pipe fileHandleForReading. task launch. taskresponse := ((NSString alloc) initWithData: (file readDataToEndOfFile) encoding: NSUTF8StringEncoding)
+
+
+task := (NSTask alloc) init. task setLaunchPath:'/usr/sbin/diskutil'. arguments := {'list', nil}.  task setArguments: arguments. pipe := NSPipe new. task setStandardOutput:pipe. file := pipe fileHandleForReading. task launch. taskresponse := ((NSString alloc) initWithData: (file readDataToEndOfFile) encoding: NSUTF8StringEncoding)
+
+task := (NSTask alloc) init. task setLaunchPath:'/usr/bin/users'. arguments := {nil}.  task setArguments: arguments. pipe := NSPipe new. task setStandardOutput:pipe. file := pipe fileHandleForReading. task launch. taskresponse := ((NSString alloc) initWithData: (file readDataToEndOfFile) encoding: NSUTF8StringEncoding)
+
+------
+
+
+box001 removeAllItems.
+0 to:((arraydos count)-1) do: [:x|box001 addItemWithObjectValue:(arraydos objectAtIndex:x)].
+
+(NSImage alloc initWithContentsOfFile:((NSOpenPanel openPanel setTreatsFilePackagesAsDirectories:false;runModal;filename))) inspect
+
+--------
+
+(NSBundle bundleWithPath:'/Users/jcburns/Documents/jcb_development/cocoa/fractionBundle/build/fractionBundle.bundle') load.
+ay := Fraction new.
+ay setTo:4 over:5.
+bee := Fraction new.
+bee setTo:6 over:27.
+cee := ay add:bee
+
+--------
+rss30306 := RSS new.
+rss30306 initWithURL:(NSURL URLWithString:'http://www.rssweather.com/rss.php?&zipcode=30306&country=us&alt=rss20a') normalize:YES.
+((rss30306 newsItems) objectAtIndex:0) objectForKey:'content:encoded'.
+
+(theWebView mainFrame) loadHTMLString:(((rss30306 newsItems) objectAtIndex:0) objectForKey:'content:encoded') baseURL:nil.
+
+rss45701 := (RSS new) initWithURL:(NSURL URLWithString:'http://www.rssweather.com/rss.php?&zipcode=45701&country=us&alt=rss20a') normalize:YES
+rss30306 initWithURL:(NSURL URLWithString:'http://www.rssweather.com/rss.php?&zipcode=30306&country=us&alt=rss20a') normalize:YES.(theWebView mainFrame) loadHTMLString:(((rss30306 newsItems) objectAtIndex:0) objectForKey:'content:encoded') baseURL:nil
+
+--------
+
+cnn_topstories := (RSS new) initWithURL:(NSURL URLWithString:'http://rss.cnn.com/rss/cnn_topstories.rss') normalize:YES.
+(cnn_topstories newsItems) @ objectForKey:'title'
+
+cnn_world := (RSS new) initWithURL:(NSURL URLWithString:'http://rss.cnn.com/rss/cnn_world.rss') normalize:YES.
+(cnn_world newsItems) @ objectForKey:'title'
+
+---------
+
+theURL := NSURL URLWithString:'http://weather.gov/data/current_obs/KATL.xml'.
+xmlDoc := (NSXMLDocument alloc) initWithContentsOfURL:theURL options:NSXMLDocumentTidyXML error:nil.
+
+leWindow := NSWindow alloc initWithContentRect:(0<>0 extent:700<>1000)
+ styleMask:NSTitledWindowMask + NSClosableWindowMask + NSResizableWindowMask
+ backing:NSBackingStoreBuffered
+ defer:NO.
+ leWindow orderFront:nil.
+form3 := NSForm alloc initWithFrame:(0<>0 extent:700<>1000).
+form3 setCellSize:(NSValue sizeWithWidth:700 height:20).
+leWindow contentView addSubview:form3.
+0 to:(((xmlDoc childAtIndex:0)childCount)-1) do: [:x| form3 addEntry:((xmlDoc childAtIndex:0) childAtIndex:x)name].
+0 to: ((form3 numberOfRows)-1) do: [:x| (form3 cellAtIndex:x) setStringValue:((xmlDoc childAtIndex:0) childAtIndex:x)objectValue].
+
+((xmlDoc childAtIndex:0) children) objectAtIndex:12
+(((xmlDoc childAtIndex:0) children) objectAtIndex:12) objectValue
+
+xmlDoc2 := (NSXMLDocument alloc) initWithContentsOfURL:(NSURL URLWithString:'http://www.rssweather.com/rss.php?&zipcode=30306&country=us&alt=rss20a') options:NSXMLDocumentTidyXML error:nil.
+
+xmlDoc2 := (NSXMLDocument alloc) initWithContentsOfURL:(NSURL URLWithString:'http://www.macbidouille.com/macbidouille.rss') options:NSXMLDocumentTidyXML error:nil.
+(xmlDoc2 objectsForXQuery:'/rss[1]/channel[1]/item[1]/title' error:nil) objectValue
+
+--------------
+(NSFileManager defaultManager) fileAttributesAtPath:'/Volumes/Fuego120/old machines remnants/mercurio/clippings/adam email' traverseLink:0
+(NSFileManager defaultManager) extendedAttributesAtPath:'/Volumes/Fuego120/old machines remnants/mercurio/clippings/adam email' error:nil
+modz := [:thepath| ((NSFileManager defaultManager) fileAttributesAtPath:thepath traverseLink:0) objectForKey:NSFileModificationDate]
+
+----------------
+(NSBundle bundleWithPath:'/System/Library/Frameworks/Quartz.framework') load.
+(not needed any more..)
+
+leWindow := NSWindow alloc initWithContentRect:(0<>0 extent:640<>480)
+ styleMask:NSTitledWindowMask + NSClosableWindowMask + NSResizableWindowMask
+ backing:NSBackingStoreBuffered
+ defer:NO.
+ leWindow orderFront:nil.
+jcbQC := (QCView alloc) initWithFrame:(0<>0 corner:640<>480).
+(leWindow contentView) addSubview:jcbQC.
+
+jcbQC loadCompositionFromFile: (NSOpenPanel openPanel setTreatsFilePackagesAsDirectories:false;runModal;filename).
+
+jcbQC loadCompositionFromFile:'/Users/jcburns/Documents/jcb_development/quartz composer/jcb kiosk 001.qtz'.
+jcbQC startRendering.
+
+(jcbQC _bitmapRepresentationForSize:(NSValue sizeWithWidth:800 height:600)) TIFFRepresentation writeToFile:'/grab3.tif' atomically:YES
+
+-----------------
+jcbQC loadCompositionFromFile:'/Users/jcburns/Documents/jcb_development/quartz composer/jcb kiosk 002b.qtz'
+jcbQC setValue:'file://localhost/Users/jcburns/Pictures/bbc%20election%20logo.psd' forInputKey:'ImageURL'
+jcbQC setValue:'http://maps.yahoo.com/traffic.rss?csz=30306&mag=5&minsev=2' forInputKey:'rssURL'
+jcbQC resumeRendering
+jcbQC pauseRendering
+
+rssName setStringValue:'http://www.nytimes.com/services/xml/rss/nyt/HomePage.xml'
+rssName setStringValue:'http://www.npr.org/rss/rss.php?topicId=1008'
+rssName setStringValue:'http://www.npr.org/rss/rss.php?topicId=1003'
+rssName setStringValue:'http://www.npr.org/rss/rss.php?prgId=7'
+rssName setStringValue:'http://rss.news.yahoo.com/rss/topstories'
+rssName setStringValue:'http://www.cbsnews.com/feeds/rss/main.rss'
+
+(jcbQC makeThumbnail) writeToFile:'/Users/jcburns/thumbnail.tif' atomically:1
+
+jcbQC setValue:5 forInputKey:'cubeX'
+
+jcbQC setValue:45 forInputKey:'cubeX'
+
+jcbQC valueForInputKey:'ImageURL'
+
+jcbQC setValue:'http://static.flickr.com/3/4026546_17193335ea_m.jpg' forInputKey:'ImageURL'
+
+jcbQC inputKeys
+
+jcbQC valueForInputKey:@(jcbQC inputKeys)
+
+array1 := jcbQC valueForInputKey:@(jcbQC inputKeys)
+
+jcbQC setValue:@array1 forInputKey:@(jcbQC inputKeys)
+array2 := {'http://www.cbsnews.com/feeds/rss/main.rss', 'http://static.flickr.com/2/3275935_04aecdc091_m.jpg', 20, 30, 90, 30, 6}.
+array3 := {'http://rss.news.yahoo.com/rss/topstories', 'http://static.flickr.com/10/11143633_b442623fa2_m.jpg', 0, 0, 45, 30, 6}.
+array4 := {'http://www.washingtonpost.com/wp-srv/topnews/rssheadlines.xml', 'http://static.flickr.com/8/7439413_c70a158d0c_m.jpg', 0, 0, 45, 30, 6}
+
+
+
+contents := (NSString stringWithContentsOfURL:(NSURL URLWithString:'http://theocacao.com/index.rss'))
+------------------
+(NSWorkspace sharedWorkspace) valueForKeyPath:'launchedApplications.NSApplicationPath'
+(NSWorkspace sharedWorkspace) launchApplication:'iTunes'
+(NSWorkspace sharedWorkspace) valueForKeyPath:'launchedApplications.NSApplicationName'
+
+safariIcon := (NSWorkspace sharedWorkspace) iconForFile: ((NSWorkspace sharedWorkspace) fullPathForApplication:'Safari')
+iTunesIcon := (NSWorkspace sharedWorkspace) iconForFile: ((NSWorkspace sharedWorkspace) fullPathForApplication:'iTunes')
+(((NSWorkspace sharedWorkspace) iconForFile: ((NSWorkspace sharedWorkspace) fullPathForApplication:'Safari')) _bitmapRepresentation) draw
+
+-------------
+
+(NSApplication sharedApplication) delegate managedObjectContext
+(NSApplication sharedApplication) delegate managedObjectModel
+
+------------
+sys browse:FSCoreDataSample managedObject.
+cd := (FSCoreDataSample managedObject).
+cd2:= NSManagedObject new.
+mc:= cd managedObjectContext.
+ent := cd entity.
+cd2  initWithEntity:ent insertIntoManagedObjectContext:mc.
+cd2 willChangeValueForKey:'lastName'. cd2 setValue:'Smith' forKey:'lastName'. cd2 didChangeValueForKey:'lastName'.
+cd2 willChangeValueForKey:'firstName'. cd2 setValue:'Sammy' forKey:'firstName'. cd2 didChangeValueForKey:'firstName'.
+cd2 willChangeValueForKey:'address'. cd2 setValue:(cd valueForKey:'address') forKey:'address'. cd2 didChangeValueForKey:'address'.
+-------
+((form4 cells) objectAtIndex:0) bind: 'value' toObject:cd2 withKeyPath: 'address' options:nil.
+((form4 cells) objectAtIndex:1) bind: 'value' toObject:cd2 withKeyPath: 'email' options:nil.
+((form4 cells) objectAtIndex:2) bind: 'value' toObject:cd2 withKeyPath: 'firstName' options:nil.
+((form4 cells) objectAtIndex:3) bind: 'value' toObject:cd2 withKeyPath: 'lastName' options:nil.
+((form4 cells) objectAtIndex:4) bind: 'value' toObject:cd2 withKeyPath: 'phone' options:nil.
+((form4 cells) objectAtIndex:5) bind: 'value' toObject:cd2 withKeyPath: 'salary' options:nil.
+((form4 cells) objectAtIndex:0) setTitle:'address'.
+((form4 cells) objectAtIndex:1) setTitle:'email'.
+((form4 cells) objectAtIndex:2) setTitle:'firstName'.
+((form4 cells) objectAtIndex:3) setTitle:'lastName'.
+((form4 cells) objectAtIndex:4) setTitle:'phone'.
+((form4 cells) objectAtIndex:5) setTitle:'salary'.
+-------
+
+
+r3 := NSManagedObject new.
+r3 willChangeValueForKey:'content'. r3 setValue:'shooting at night' forKey:'content'. r3 didChangeValueForKey:'content'
+r3 willChangeValueForKey:'comment'. r3 setValue:'' forKey:'comment'. r3 didChangeValueForKey:'comment'
+
+cod := (NSManagedObject alloc)initWithEntity:dent insertIntoManagedObjectContext:mc.
+cod willChangeValueForKey:'budget'. cod setValue:488000 forKey:'budget'. cod didChangeValueForKey:'budget'.
+cod willChangeValueForKey:'name'. cod setValue:'Coders' forKey:'name'. cod didChangeValueForKey:'name'.
+
+-------
+task := NSTask new.args := {'-g','/Users/jcburns/Desktop/110_DCP_6498b.jpg'}.task setArguments:args.task setLaunchPath:'/Users/jcburns/bin/ExifTool/exiftool'.pipe := NSPipe new.task setStandardOutput:pipe.file := pipe fileHandleForReading.task launch.result := ((NSString alloc) initWithData:(file readDataToEndOfFile) encoding:NSASCIIStringEncoding)
+--------
+task := NSTask new.args := {'-g',(NSOpenPanel openPanel setTreatsFilePackagesAsDirectories:true;runModal;filename)}.task setArguments:args.task setLaunchPath:'/Users/jcburns/bin/ExifTool/exiftool'.pipe := NSPipe new.task setStandardOutput:pipe.file := pipe fileHandleForReading.task launch.result := ((NSString alloc) initWithData:(file readDataToEndOfFile) encoding:NSASCIIStringEncoding)
+------
+nsi:= (NSImage alloc) initWithPasteboard:(NSPasteboard generalPasteboard)
+
+------
+(NSBundle bundleWithPath:'/Users/jcburns/Documents/jcb_development/cocoa/MCPKit_bin_3.0.1/MCPKit_bundled.framework') load
+(NSBundle bundleWithPath:'/Users/jcburns/Documents/jcb_development/cocoa/MCPKit_bin_3.0.1/SMySQL_static.framework') load
+mcpc := (MCPConnection alloc) initToHost:'127.0.0.1' withLogin:'root' password:'' usingPort:0.
+(mcpc queryString:'select * from hello where name like "%ill%"') fetch2DResultAsType:2
+mcpc2 := (MCPConnection alloc) initToHost:'jcbd.com' withLogin:'root' password:'xxxx' usingPort:0
+mcpc selectDB:'test'.
+(mcpc listTables) fetch2DResultAsType:1
+(mcpc queryString:'select * from hello where name like "%ill%"') fetch2DResultAsType:1
+mcpc selectDB:'sammy_research'.mcpc setEncoding:4.
+mcpc getAllRowsFromQuery:'select distinct `region` from agg_surv' asType:3
+
+mcpc2 queryString:'select comment_ID, comment_author, comment_date, comment_author_IP from wp_nnc_comments where comment_date > \'2006-05-03\'  and comment_approved <> \'spam\''
+mcpc2 getAllRowsFromQuery:'select comment_ID, comment_author, comment_date, comment_content from wp_nnc_comments where comment_date > \'2006-05-03\'  and comment_approved <> \'spam\'' asType:2
+
+fieldz :=(mcpc listFieldsFromTable:'agg_surv')
+------
+
+mcpc queryString:'CREATE TABLE `fscript` (`id` int(11) default NULL,  `name` tinytext NOT NULL, `likes_eggnog` enum('Y','N') NOT NULL default 'N',) ENGINE=MyISAM'
+mcpc queryString:'CREATE TABLE `fscript2` (`id` int(11) NOT NULL auto_increment) ENGINE=MyISAM'
+mcpc queryString:'drop TABLE IF EXISTS `fscript2`'
+mcpc queryString:'CREATE TABLE `fscript` (`id` int(11) NOT NULL auto_increment,  `name` tinytext NOT NULL, `likes_eggnog` enum("Y","N") NOT NULL default "N",PRIMARY KEY  (`id`)) ENGINE=MyISAM'
+
+mcpc queryString:('insert into fscript values ("","' stringByAppendingString:(((well1 color)description) stringByAppendingString:'","")'))
+
+-------
+myc := MyClass new 
+MyClass setFSBlock:[:self :_cmd| 'I see that ' ++ _cmd ++ ' has been called on  
+' ++ self printString] asInstanceMethod:#method1
+NSColor subclass:'JCBColor' instanceVariableNames:'a b c'
+
+trans := [NSApplication sharedApplication mainWindow setAlphaValue:(well1 color) alphaComponent].
+well1 setTarget:trans; setAction:#value
+
+cv addSubview:slider.
+textfield setFrame:(10<>30 extent:600<>160).
+t2 := [NSApplication sharedApplication mainWindow setAlphaValue:slider floatValue].
+slider setTarget:t2;setAction:#value
+
+
+-------
+leWindow3 := NSWindow alloc initWithContentRect:(0<>500 extent:640<>580)
+ styleMask:NSTitledWindowMask + NSClosableWindowMask + NSResizableWindowMask backing:NSBackingStoreBuffered defer:NO.
+leWindow3 orderFront:nil.
+cv := leWindow3 contentView.
+cv lockFocus.
+path := (NSBezierPath bezierPathWithRect:cv bounds).
+(NSColor colorWithCalibratedWhite:0.81 alpha:1.0) set.
+path moveToPoint:(128<>128).path appendBezierPathWithArcWithCenter:128<>128 radius:64 startAngle:0 endAngle:321.NSColor whiteColor set. path fill. NSColor grayColor set. path stroke.
+--------
+NSColor whiteColor set. therect fill.
+dm := 81 * 2. rd := dm * 0.50. qt := dm * 0.25.
+white := NSColor whiteColor.
+black := NSColor blackColor.
+--------
+switch := [0 to:3 do:[:x|segControl2 setLabel:((um itemObjectValueAtIndex:(um numberOfItems) random)) forSegment:x]]
+
+
+[segControl2 := sys load:'/Users/jcburns/Documents/jcb_development/f-script/f-script objects/segControl2'.
+um := sys load:'/Users/jcburns/Documents/jcb_development/f-script/f-script objects/combobox_w_jcbdclientcolors'.
+um2 := sys load:'/Users/jcburns/Documents/jcb_development/f-script/f-script objects/um2'.
+switchbutton := sys load:'/Users/jcburns/Documents/jcb_development/f-script/f-script objects/switchbutton'.
+um2 addItemsWithObjectValues:(NSColorList availableColorLists @name).
+cv addSubview:segControl2; addSubview:um; addSubview:switchbutton; addSubview:um2.
+switch := [0 to:3 do:[:x|segControl2 setLabel:((um itemObjectValueAtIndex:(um numberOfItems) random)) forSegment:x]].
+color_it := [well1 setColor:((NSColorList colorListNamed:(um2 stringValue)) colorWithKey:(um stringValue)); sendAction:#value to:cta.segControl2 setLabel:(um stringValue) forSegment:(segControl2 selectedSegment)].
+sc2color_it := [well1 setColor:((NSColorList colorListNamed:(um2 stringValue)) colorWithKey:(segControl2 labelForSegment:(segControl2 selectedSegment))); sendAction:#value to:cta.um setStringValue:(segControl2 labelForSegment:(segControl2 selectedSegment))].
+reloadum := [um removeAllItems; addItemsWithObjectValues:((NSColorList colorListNamed:(um2 stringValue) allKeys)).um setStringValue:''.switch value].
+switchbutton setTarget:switch; setAction:#value.
+um setTarget:color_it; setAction:#value.
+um2 setTarget:reloadum; setAction:#value.
+segControl2 setTarget:sc2color_it; setAction:#value.]
+
+qp setColor:(well1 color) forKey:('qp' stringByAppendingString:(qp _count) stringValue)
+
+(um objectValues)  inspectIn:sys with:{#self, [:lecolor|(NSColorList colorListNamed:(um2 stringValue)) colorWithKey:lecolor]}
+
+ee := [:lecolor|x:=(NSColorList colorListNamed:(um2 stringValue)) colorWithKey:lecolor.a := 'INSERT INTO `colors` (`name`,`desc`,`colorlist`) VALUES ("' ++ lecolor ++ '","' ++ (x description) ++ '","' ++ (um2 stringValue) ++ '")'.mcpc insertQuery:a].
+ee value:@(um objectValues)
+
+reds := ((mcpc queryString:'select * from colors where name like "%red%"')fetch2DResultAsType:2)
+
+reds @objectForKey:'desc'
+
+colormake := [:cc|com:= cc componentsSeparatedByString:' '.col := NSColor colorWithCalibratedRed:((com at:1) floatValue) green:((com at:2) floatValue) blue:((com at:3) floatValue) alpha:((com at:4) floatValue). well1 setColor:col].
+
+colormake value:((reds at:4) objectForKey:'desc')
+
+cm :=[:cc|com:= cc componentsSeparatedByString:' '. NSColor colorWithCalibratedRed:((com at:1) floatValue) green:((com at:2) floatValue) blue:((com at:3) floatValue) alpha:((com at:4) floatValue)]
+
+sq := [textfield setStringValue:((reds count)stringValue)++' colors: '++((reds @objectForKey:'name')description).NSBezierPath setDefaultLineWidth:4.
+leWindow contentView lockFocus.
+0 to:((reds count)-1) do:
+[:x|
+	path := NSBezierPath bezierPathWithRect:((x+1)*25<>210 extent:(20)<>(20)).
+	(cm value:((reds at:x) objectForKey:'desc')) set.
+	path fill. (NSColor blackColor) set. path stroke.
+	].
+leWindow contentView unlockFocus.
+leWindow flushWindow.]
+
+cm :=[:cc|com:= cc componentsSeparatedByString:' '. NSColor colorWithCalibratedRed:((com at:1) floatValue) green:((com at:2) floatValue) blue:((com at:3) floatValue) alpha:((com at:4) floatValue)]
+
+evcol := [:a|reds:=((mcpc queryString:'select * from colors where name like "%' ++ a ++ '%"')fetch2DResultAsType:2).sq value]
+
