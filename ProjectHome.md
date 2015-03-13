@@ -1,0 +1,1 @@
+From a small, well-meaning design firm in Atlanta, a collection of code fragments that may help you if you're a designer, or a television person, or maybe  a Mac developer
