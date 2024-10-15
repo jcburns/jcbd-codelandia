@@ -1,0 +1,4 @@
+Hello from the green cottage!
+it's Tuesday, October 15th, 2024.
+That's the first day of early voting in Atlanta. We're closing things up and heading down there on Saturday.
+I just read about a way of invoking the VSCode editor from a GitHub page in a web browser--and that's what I'm doing here.
